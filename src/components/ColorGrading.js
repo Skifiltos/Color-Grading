@@ -5,36 +5,47 @@ import { v4 as uuidv4 } from "uuid";
 
 const ColorGrading = () => {
 
+  const [colorInput, setColorInput] = useState({
+    color: "",
+    qty: 5
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("inviato");
+    console.log(colorInput);
   }
 
   const handleChange = (e) => {
-    console.log(e.target);
-  }
+    const { name, value } = e.target;
+    setColorInput({
+      ...colorInput,
+      [name]: value
+    });
+  };
 
   return (
   <>
-      <form classname="form" onsubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">
           
           <input
            type="text"
            name="color"
            id="color"
-           value="0"
+           value={colorInput.color}
            maxLength={7}
            onChange={handleChange}
            className="input"
           ></input>
 
           <input
-           type="text"
-           name="color"
-           id="color"
-           value="0"
-           maxLength={7}
+           type="number"
+           name="qty"
+           id="qty"
+           value={colorInput.qty}
+           max={100}
+           min={5}
+           step={5}
            onChange={handleChange}
            className="input"
           ></input>

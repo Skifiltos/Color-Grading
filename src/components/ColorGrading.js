@@ -10,6 +10,9 @@ const ColorGrading = () => {
     qty: 5
   });
 
+  const color = new Values("rgb(0, 153, 255)");
+  console.log(color.all(20));
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(colorInput);
@@ -24,30 +27,30 @@ const ColorGrading = () => {
   };
 
   return (
-  <>
+    <>
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">
-          
+
           <input
-           type="text"
-           name="color"
-           id="color"
-           value={colorInput.color}
-           maxLength={7}
-           onChange={handleChange}
-           className="input"
+            type="text"
+            name="color"
+            id="color"
+            value={colorInput.color}
+            maxLength={7}
+            onChange={handleChange}
+            className="input"
           ></input>
 
           <input
-           type="number"
-           name="qty"
-           id="qty"
-           value={colorInput.qty}
-           max={100}
-           min={5}
-           step={5}
-           onChange={handleChange}
-           className="input"
+            type="number"
+            name="qty"
+            id="qty"
+            value={colorInput.qty}
+            max={100}
+            min={5}
+            step={5}
+            onChange={handleChange}
+            className="input"
           ></input>
 
         </div>
@@ -55,7 +58,7 @@ const ColorGrading = () => {
           Create
         </button>
       </form>
-      </>
+    </>
   );
 };
 

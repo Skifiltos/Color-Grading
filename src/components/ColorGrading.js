@@ -5,17 +5,26 @@ import { v4 as uuidv4 } from "uuid";
 
 const ColorGrading = () => {
 
+  const [selectedColor, setSelectedColor] = useState([]);
+
   const [colorInput, setColorInput] = useState({
     color: "",
     qty: 5
   });
 
-  const color = new Values("rgb(0, 153, 255)");
-  console.log(color.all(20));
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(colorInput);
+
+    if (colorInput.color && colorInput.qty) {
+      const { color, qty } = colorInput;
+
+      setSelectedColor(
+        new Values(color).all(Math.round(100 / parseInt(qty, 10)) * 2)
+      );
+    }
+
   }
 
   const handleChange = (e) => {
@@ -26,6 +35,7 @@ const ColorGrading = () => {
     });
   };
 
+  console.log(selectedColor);
   return (
     <>
       <form className="form" onSubmit={handleSubmit}>
@@ -58,6 +68,16 @@ const ColorGrading = () => {
           Create
         </button>
       </form>
+      {
+        selectedColor.length > 0 ? (
+          selectedColor.map(el => <SingleColor key={uuidv4()} {...el} />)
+        ) : (
+          <h4>
+            Loading...
+          </h4>
+        )
+      }
+
     </>
   );
 };

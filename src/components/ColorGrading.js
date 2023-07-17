@@ -64,20 +64,24 @@ const ColorGrading = () => {
           ></input>
 
         </div>
+
         <button className="btn btn-selector" type="submit">
           Create
         </button>
-      </form>
-      {
-        selectedColor.length > 0 ? (
-          selectedColor.map(el => <SingleColor key={uuidv4()} {...el} />)
-        ) : (
-          <h4>
-            Loading...
-          </h4>
-        )
-      }
 
+      </form>
+
+      <section className="color-section">
+        {
+          selectedColor.length > 0 ? (
+            selectedColor.map((el) => <SingleColor key={uuidv4()} {...el} />)
+          ) : (
+            <h4>
+              Loading...
+            </h4>
+          )
+        }
+      </section>
     </>
   );
 };

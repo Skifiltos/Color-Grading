@@ -35,7 +35,14 @@ const ColorGrading = () => {
     });
   };
 
-  console.log(selectedColor);
+  useEffect(() => {
+    setColorInput({ qty: 10, colorInput, color: "#0e76bd" })
+    setSelectedColor(
+      new Values("#1194ec").all(Math.round(100 / 10) * 2)
+    )
+  }, [])
+
+
   return (
     <>
       <form className="form" onSubmit={handleSubmit}>
